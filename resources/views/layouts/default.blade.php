@@ -106,6 +106,7 @@
 
           <div class="d-flex flex-column-fluid">
             <div class="container">
+              @yield('content')
               <p>Page content goes here...</p>
             </div>
           </div>
@@ -128,5 +129,7 @@
   <script src="/assets/backend/js/scripts.bundle.js?v=7.0.6"></script>
   <script src="/assets/backend/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.6"></script>
   <script src="/assets/backend/js/pages/widgets.js?v=7.0.6"></script>
+  @stack('js')
+  
 </body>
 </html>

@@ -24,3 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/templates', function () {
     return view('layouts.default');
 });
+
+Route::get('/datatables', function () {
+    return view('layouts.template.datatable.index');
+});
