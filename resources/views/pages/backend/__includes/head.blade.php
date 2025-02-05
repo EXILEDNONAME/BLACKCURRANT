@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/backend/plugins/global/plugins.bundle.css?v=7.0.6" />
   <link rel="stylesheet" type="text/css" href="/assets/backend/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.6" />
   <link rel="stylesheet" type="text/css" href="/assets/backend/css/style.bundle.css?v=7.0.6" />
+  @stack('head')
   <link rel="stylesheet" type="text/css" href="/assets/backend/css/themes/layout/header/base/light.css?v=7.0.6" />
   <link rel="stylesheet" type="text/css" href="/assets/backend/css/themes/layout/header/menu/light.css?v=7.0.6" />
   <link rel="stylesheet" type="text/css" href="/assets/backend/css/themes/layout/brand/dark.css?v=7.0.6" />
