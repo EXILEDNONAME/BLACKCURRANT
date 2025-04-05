@@ -1,5 +1,5 @@
 <div class="form-group row">
-  <div class="col-lg-3 col-form-label"> Date </div>
+  <div class="col-lg-3 col-form-label"> {{ __('default.label.date') }} </div>
   <div class="col-lg-9">
     <div class="input-group input-group-solid date" id="ex_datetimepicker_date_start" data-target-input="nearest">
       {{ Html::text('date', (isset($data->date) ? $data->date : ''))->class([ $errors->has('date') ? 'form-control is-invalid' : 'form-control form-control-solid datetimepicker-input', 'data-target' => "#ex_datetimepicker_date_start"])->placeholder('- ' . __('default.select.date') . ' -')->autocomplete('off')->required() }}

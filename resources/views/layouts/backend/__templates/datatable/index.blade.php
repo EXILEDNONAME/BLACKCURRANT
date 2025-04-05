@@ -179,5 +179,8 @@ var table = $('#main_table').DataTable({
     [1, 'asc']
   ]
 });
+
+@include('layouts.backend.__templates.datatable.extension.javascript.checkable')
+@include('layouts.backend.__templates.datatable.extension.javascript.checkable-group')
 </script>
 @endpush
