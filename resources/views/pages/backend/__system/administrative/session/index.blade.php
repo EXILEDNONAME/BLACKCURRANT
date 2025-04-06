@@ -1,4 +1,4 @@
-@extends('layouts.backend.default')
+@extends('layouts.default')
 @section('title', 'Sessions')
 
 @push('head')
@@ -8,7 +8,7 @@
 @section('content')
 <div class="row">
   <div class="col-lg-12">
-    <div class="card card-custom card-stretch gutter-b" data-card="true" id="exilednoname_card">
+    <div class="card card-custom card-stretch gutter-b" data-card="true" id="main_card">
       <div class="card-header">
         <div class="card-title">
           <h3 class="card-label"> {{ __('default.label.sessions') }} </h3>
@@ -20,7 +20,7 @@
 
         </div>
       </div>
-      <div class="card-body" id="exilednoname_body">
+      <div class="card-body" id="main_body">
 
         @if ($message = Session::get('success'))
         <div id="toast-container" class="toast-bottom-right">
@@ -39,7 +39,7 @@
         @endif
 
         <div class="table-responsive">
-          <table width="100%" class="table table-hover table-checkable table-sm rounded" id="exilednoname_table">
+          <table width="100%" class="table table-hover table-checkable table-sm rounded" id="main_table">
             <thead>
               <tr>
                 <th class="no-export"> </th>
@@ -63,20 +63,20 @@
 <script>
 $(document).ready(function() {
   $('#toast-container').fadeOut(5000);
-  KTApp.block('#exilednoname_body', {
+  KTApp.block('#main_body', {
     overlayColor: '#000000',
     state: 'primary',
     message: "{{ __('default.label.please-wait') }} ..."
   });
   setTimeout(function() {
-    KTApp.unblock('#exilednoname_body');
+    KTApp.unblock('#main_body');
   }, 2000);
 });
 
 "use strict";
 
 var sort = 1;
-var table = $('#exilednoname_table').DataTable({
+var table = $('#main_table').DataTable({
   serverSide: true,
   searching: true,
   rowId: 'Collocation',

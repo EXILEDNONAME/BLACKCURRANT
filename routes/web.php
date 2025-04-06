@@ -18,6 +18,17 @@ Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class
 Route::get('/dashboard/file-manager', [App\Http\Controllers\Backend\DashboardController::class, 'file_manager'])->name('dashboard.file-manager');
 Route::get('dashboard/logout', [App\Http\Controllers\Backend\DashboardController::class, 'logout'])->name('dashboard.logout');
 
+// ADMINISTRATIVE - SESSIONS
+Route::group([
+  'as' => 'dashboard.system.administrative.sessions.',
+  'prefix' => 'dashboard/administrative/sessions',
+  'namespace' => 'App\Http\Controllers\Backend\__System\Administrative',
+  'middleware' => 'auth',
+], function () {
+  Route::get('reset', 'SessionController@reset')->name('reset');
+  Route::get('/', 'SessionController@index');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
