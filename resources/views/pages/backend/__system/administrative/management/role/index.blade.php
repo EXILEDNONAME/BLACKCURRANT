@@ -1,4 +1,4 @@
-@extends('layouts.backend.__templates.datatable.index', ['page' => 'datatable-index', 'date' => 'false'])
+@extends('layouts.backend.__templates.datatable.index', ['page' => 'datatable-index', 'active' => 'false', 'date' => 'false'])
 @section('title', 'Management Roles')
 
 @section('table-header')

@@ -1,11 +1,10 @@
 # TO DO
 
 * Login Page
-  * Login
+  * (OK) - Login
   * Forgot Password
   * Register
 * Check Datatables
 * Sidebar
-* Statistics
-* Managements
-* Edit Session Head Table
+* Managements Activity (Setting User Roles)
+* Profile Page

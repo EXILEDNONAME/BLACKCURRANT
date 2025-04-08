@@ -114,7 +114,6 @@
                 @endif
 
                 @yield('table-header')
-                <th> Active </th>
                 <th class="no-export"> </th>
               </tr>
             </thead>

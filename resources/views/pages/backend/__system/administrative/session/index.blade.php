@@ -39,7 +39,7 @@
         @endif
 
         <div class="table-responsive">
-          <table width="100%" class="table table-hover table-checkable table-sm rounded" id="main_table">
+          <table width="100%" class="table table-hover table-separate table-head-custom table-checkable table-sm rounded" id="main_table">
             <thead>
               <tr>
                 <th class="no-export"> </th>
