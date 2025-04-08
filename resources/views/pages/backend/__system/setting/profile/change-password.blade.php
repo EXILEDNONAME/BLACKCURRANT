@@ -1,4 +1,4 @@
-@extends('layouts.backend.default')
+@extends('layouts.default')
 @push('title', 'Change Password')
 
 @section('content')

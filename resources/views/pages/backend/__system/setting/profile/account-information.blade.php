@@ -1,4 +1,4 @@
-@extends('layouts.backend.default')
+@extends('layouts.default')
 @section('title', 'Account Informations')
 
 @section('content')
@@ -23,6 +23,16 @@
       @endif
 
       <input class="form-control" name="created_by" type="hidden" value="{{ Auth::User()->id }}">
+
+      @php $model_has_roles = \DB::table('model_has_roles')->where('model_id', Auth::User()->id)->get(); @endphp
+      @foreach($model_has_roles as $model_has_roles)
+      @php $roles = \DB::table('roles')->where('id', $model_has_roles->role_id)->get(); @endphp
+      @foreach($roles as $roles)
+      <span class="label label-lg label-dark  label-inline">{{ $roles->name }}</span>
+      @endforeach
+      @endforeach
+
+      <input id="kt_tagify_1" class="form-control tagify" name='tags' readonly placeholder='type...' value='css, html, javascript' autofocus data-blacklist='.NET,PHP'/>
 
       <div class="form-group row">
         <label class="col-lg-3 col-form-label"> Access </label>
@@ -92,5 +102,21 @@
   $(document).ready(function() {
     $('#toast-container').fadeOut(5000);
   });
-  </script>
+</script>
+<script>
+
+  var KTTagify = function() {
+    var demo1 = function() {
+      var input = document.getElementById('kt_tagify_1'), tagify = new Tagify(input, { whitelist: [""], blacklist: [""], }) }
+      
+      return {
+        init: function() { demo1(); }
+      };
+  }();
+
+  jQuery(document).ready(function() {
+    KTTagify.init();
+  });
+
+</script>
 @endpush
