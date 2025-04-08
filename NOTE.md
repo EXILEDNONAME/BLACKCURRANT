@@ -8,3 +8,4 @@
 * Sidebar
 * Statistics
 * Managements
+* Edit Session Head Table
