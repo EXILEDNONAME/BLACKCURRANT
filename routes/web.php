@@ -2,21 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 // DASHBOARD
 Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/dashboard/file-manager', [App\Http\Controllers\Backend\DashboardController::class, 'file_manager'])->name('dashboard.file-manager');
 Route::get('dashboard/logout', [App\Http\Controllers\Backend\DashboardController::class, 'logout'])->name('dashboard.logout');
+
+// SETTINGS - PROFILES
+Route::group([
+  'as' => 'dashboard.system.setting.profile.',
+  'prefix' => 'dashboard/settings/profiles',
+  'namespace' => 'App\Http\Controllers\Backend\__System\Setting',
+  'middleware' => 'auth',
+], function () {
+  Route::get('/', 'ProfileController@index')->name('index');
+  Route::get('account-informations', 'ProfileController@account_information')->name('account-information');
+  Route::patch('account-informations/update/{id}', 'ProfileController@account_information_update')->name('account-information-update');
+  Route::get('change-password', 'ProfileController@change_password')->name('change-password');
+  Route::post('update-password', 'ProfileController@update_password')->name('update-password');
+});
 
 // ADMINISTRATIVE - SESSIONS
 Route::group([
