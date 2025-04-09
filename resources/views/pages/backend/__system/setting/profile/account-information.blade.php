@@ -24,21 +24,27 @@
 
       <input class="form-control" name="created_by" type="hidden" value="{{ Auth::User()->id }}">
 
-      @php $model_has_roles = \DB::table('model_has_roles')->where('model_id', Auth::User()->id)->get(); @endphp
-      @foreach($model_has_roles as $model_has_roles)
-      @php $roles = \DB::table('roles')->where('id', $model_has_roles->role_id)->get(); @endphp
-      @foreach($roles as $roles)
-      <span class="label label-lg label-dark  label-inline">{{ $roles->name }}</span>
-      @endforeach
-      @endforeach
 
-      <input id="kt_tagify_1" class="form-control tagify" name='tags' readonly placeholder='type...' value='css, html, javascript' autofocus data-blacklist='.NET,PHP'/>
+
+
 
       <div class="form-group row">
         <label class="col-lg-3 col-form-label"> Access </label>
         <div class="col-lg-9">
-          {{ Html::text('id_access', (isset($data->accesses->name) ? $data->accesses->name : ''))->class([ $errors->has('id_access') ? 'form-control is-invalid' : 'form-control form-control-solid'])->required()->isreadonly() }}
-          @error('id_access') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
+
+          <input id="kt_tagify_1" class="form-control tagify" name="tags" readonly placeholder="type..." value="
+          <?php
+          $model_has_roles = \DB::table('model_has_roles')->where('model_id', Auth::User()->id)->get();
+          foreach($model_has_roles as $model_has_roles) {
+            $roles = \DB::table('roles')->where('id', $model_has_roles->role_id)->get();
+            foreach($roles as $roles){
+              $role  = '';
+              echo $role .= $roles->name . ', ';
+            }
+          }
+          ?>
+          " data-blacklist=".NET,PHP"/>
+
         </div>
       </div>
 
@@ -108,7 +114,7 @@
   var KTTagify = function() {
     var demo1 = function() {
       var input = document.getElementById('kt_tagify_1'), tagify = new Tagify(input, { whitelist: [""], blacklist: [""], }) }
-      
+
       return {
         init: function() { demo1(); }
       };

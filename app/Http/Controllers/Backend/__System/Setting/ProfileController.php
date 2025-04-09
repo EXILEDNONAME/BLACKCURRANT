@@ -23,7 +23,7 @@ class ProfileController extends Controller {
   **/
 
   public function index() {
-    return redirect('dashboard/settings/profile/account-informations');
+    return redirect('dashboard/settings/profiles/account-informations');
   }
 
   /**

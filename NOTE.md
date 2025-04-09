@@ -5,6 +5,6 @@
   * Forgot Password
   * Register
 * Profile Page
-* Check Datatables
+* (OK) - Check Datatables
 * Sidebar
 * Managements Activity (Setting User Roles)

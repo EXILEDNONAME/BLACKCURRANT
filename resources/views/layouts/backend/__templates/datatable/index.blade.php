@@ -110,10 +110,11 @@
                 <th> {{ __('default.label.date') }} </th>
                 @endif
 
-                @if (empty($active) || $active == 'true')
-                @endif
-
                 @yield('table-header')
+
+                @if (empty($active) || $active == 'true')
+                <th> {{ __('default.label.active') }} </th>
+                @endif
                 <th class="no-export"> </th>
               </tr>
             </thead>
