@@ -30,6 +30,29 @@
   </div>
 </div>
 
+<div class="form-group row">
+                        <label class="col-3 col-form-label">Checkboxes</label>
+                        <div class="col-9 col-form-label">
+                            <div class="checkbox-list">
+                                <label class="checkbox">
+                                    <input type="checkbox"  name="Checkboxes4"/>
+                                    <span></span>
+                                    Default
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" checked="checked" name="Checkboxes4"/>
+                                    <span></span>
+                                    Checked
+                                </label>
+                                <label class="checkbox checkbox-disabled">
+                                    <input type="checkbox" disabled="disabled" name="Checkboxes4"/>
+                                    <span></span>
+                                    Disabled
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
 @if($formMode == 'create')
 <div class="form-group row">
   <label class="col-lg-3 col-form-label"> Password </label>
