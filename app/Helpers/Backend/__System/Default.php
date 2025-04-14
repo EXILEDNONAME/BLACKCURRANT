@@ -54,3 +54,13 @@ function chart_deleted($model) {
   $items .= Activity::where('description', 'deleted')->where('subject_type', $model)->where('created_at', 'like', \Carbon\Carbon::now()->format('Y') . '-12%')->count();
   return $items;
 }
+
+function management_roles() {
+  $data = DB::table('roles')->orderBy('id','asc')->where('active', 1)->pluck('name', 'id')->toArray();
+  return $data;
+}
+
+function management_users() {
+  $data = DB::table('users')->orderBy('id','asc')->where('active', 1)->pluck('username', 'id')->toArray();
+  return $data;
+}

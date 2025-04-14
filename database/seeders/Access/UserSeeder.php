@@ -13,16 +13,24 @@ class UserSeeder extends Seeder {
     $user = [
       [
         'name'        => 'Administrator',
-        'email'       => 'admin@exilednoname.com',
-        'phone'       => '0811',
+        'email'       => 'administrator@exilednoname.com',
+        'phone'       => '08112448111',
         'username'    => 'administrator',
+        'password'    => bcrypt('1234'),
+        'created_at'  => Carbon::now(),
+      ],
+      [
+        'name'        => 'Admin',
+        'email'       => 'admin@exilednoname.com',
+        'phone'       => '08112448112',
+        'username'    => 'admin.exilednoname',
         'password'    => bcrypt('1234'),
         'created_at'  => Carbon::now(),
       ],
       [
         'name'        => 'User',
         'email'       => 'user@exilednoname.com',
-        'phone'       => '08112448112',
+        'phone'       => '08112448113',
         'username'    => 'user.exilednoname',
         'password'    => bcrypt('1234'),
         'created_at'  => Carbon::now(),
@@ -37,10 +45,14 @@ class UserSeeder extends Seeder {
         'model_id'       => '1',
       ],
       [
-        // master-administrator
         'role_id'        => '2',
         'model_type'     => 'App\Models\User',
         'model_id'       => '2',
+      ],
+      [
+        'role_id'        => '3',
+        'model_type'     => 'App\Models\User',
+        'model_id'       => '3',
       ],
     ];
     \DB::table('model_has_roles')->insert($model_has_roles);

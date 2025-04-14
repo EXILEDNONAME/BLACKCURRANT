@@ -119,6 +119,7 @@ return [
 
     'error' => [
       '/'                           => 'Access Restriction',
+      'access-exist'                => 'Role Already Exists',
       'item-duplicate-event'        => 'Duplicate Item Event/Date, Check Before Save',
       'password-confirm'            => 'New Password should be same as your confirmed password. Please retype new password.',
       'password-current'            => 'Your current password does not matches with the password you provided. Please try again.',

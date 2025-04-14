@@ -72,8 +72,8 @@
           </a>
           <div class="menu-submenu">
             <ul class="menu-subnav">
-              <li class="menu-item menu-item-submenu {{ (request()->is('dashboard/administrative/managements/permissions*')) ? 'menu-item-active' : '' }}"><a href="{{ url('/dashboard/administrative/managements/permissions') }}" class="menu-link"><span class="menu-text"><i class="menu-bullet menu-bullet-dot"><span></span></i> Permissions </span></a></li>
-              <li class="menu-item menu-item-submenu {{ (request()->is('dashboard/administrative/managements/roles*')) ? 'menu-item-active' : '' }}"><a href="{{ url('/dashboard/administrative/managements/roles') }}" class="menu-link"><span class="menu-text"><i class="menu-bullet menu-bullet-dot"><span></span></i> Roles </span></a></li>
+              <!-- <li class="menu-item menu-item-submenu {{ (request()->is('dashboard/administrative/managements/accesses*')) ? 'menu-item-active' : '' }}"><a href="{{ url('/dashboard/administrative/managements/accesses') }}" class="menu-link"><span class="menu-text"><i class="menu-bullet menu-bullet-dot"><span></span></i> Accesses </span></a></li> -->
+              <!-- <li class="menu-item menu-item-submenu {{ (request()->is('dashboard/administrative/managements/roles*')) ? 'menu-item-active' : '' }}"><a href="{{ url('/dashboard/administrative/managements/roles') }}" class="menu-link"><span class="menu-text"><i class="menu-bullet menu-bullet-dot"><span></span></i> Roles </span></a></li> -->
               <li class="menu-item menu-item-submenu {{ (request()->is('dashboard/administrative/managements/users*')) ? 'menu-item-active' : '' }}"><a href="{{ url('/dashboard/administrative/managements/users') }}" class="menu-link"><span class="menu-text"><i class="menu-bullet menu-bullet-dot"><span></span></i> Users </span></a></li>
             </ul>
           </div>

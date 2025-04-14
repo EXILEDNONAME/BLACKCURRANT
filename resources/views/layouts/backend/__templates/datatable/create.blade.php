@@ -13,10 +13,6 @@
       </div>
       <div class="card-body">
 
-        @if ($message = Session::get('error'))
-        <div class="alert alert-danger" role="alert"> {{ $message }} </div><hr>
-        @endif
-
         <form method="POST" id="exilednoname-form" action="{{ URL::current() }}/../" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
           {{ csrf_field() }}
           <input class="form-control" name="created_by" type="hidden" value="{{ Auth::User()->id }}">
@@ -38,7 +34,7 @@
               </button>
             </div>
           </div>
-          </form>
+        </form>
 
       </div>
     </div>

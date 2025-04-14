@@ -70,26 +70,26 @@ Route::group([
   Route::resource('/', 'GeneralController')->parameters(['' => 'id']);
 });
 
-// ADMINISTRATIVE - MANAGEMENT PERMISSIONS
+// ADMINISTRATIVE - MANAGEMENT ACCESSES
 Route::group([
-  'as' => 'dashboard.system.administrative.management.permissions.',
-  'prefix' => 'dashboard/administrative/managements/permissions',
+  'as' => 'dashboard.system.administrative.management.accesses.',
+  'prefix' => 'dashboard/administrative/managements/accesses',
   'namespace' => 'App\Http\Controllers\Backend\__System\Administrative\Management',
   'middleware' => 'auth',
 ], function () {
-  Route::get('active/{id}', 'PermissionController@active')->name('active');
-  Route::get('activities', 'PermissionController@activity')->name('activity');
-  Route::get('inactive/{id}', 'PermissionController@inactive')->name('inactive');
-  Route::get('delete/{id}', 'PermissionController@delete')->name('delete');
-  Route::get('delete-permanent/{id}', 'PermissionController@delete_permanent')->name('delete-permanent');
-  Route::get('restore/{id}', 'PermissionController@restore')->name('restore');
-  Route::get('trash', 'PermissionController@trash')->name('trash');
-  Route::get('selected-active', 'PermissionController@selected_active')->name('selected-active');
-  Route::get('selected-inactive', 'PermissionController@selected_inactive')->name('selected-inactive');
-  Route::get('selected-delete', 'PermissionController@selected_delete')->name('selected-delete');
-  Route::get('selected-delete-permanent', 'PermissionController@selected_delete_permanent')->name('selected-delete-permanent');
-  Route::get('selected-restore', 'PermissionController@selected_restore')->name('selected-restore');
-  Route::resource('/', 'PermissionController')->parameters(['' => 'id']);
+  Route::get('active/{id}', 'AccessController@active')->name('active');
+  Route::get('activities', 'AccessController@activity')->name('activity');
+  Route::get('inactive/{id}', 'AccessController@inactive')->name('inactive');
+  Route::get('delete/{id}', 'AccessController@delete')->name('delete');
+  Route::get('delete-permanent/{id}', 'AccessController@delete_permanent')->name('delete-permanent');
+  Route::get('restore/{id}', 'AccessController@restore')->name('restore');
+  Route::get('trash', 'AccessController@trash')->name('trash');
+  Route::get('selected-active', 'AccessController@selected_active')->name('selected-active');
+  Route::get('selected-inactive', 'AccessController@selected_inactive')->name('selected-inactive');
+  Route::get('selected-delete', 'AccessController@selected_delete')->name('selected-delete');
+  Route::get('selected-delete-permanent', 'AccessController@selected_delete_permanent')->name('selected-delete-permanent');
+  Route::get('selected-restore', 'AccessController@selected_restore')->name('selected-restore');
+  Route::resource('/', 'AccessController')->parameters(['' => 'id']);
 });
 
 // ADMINISTRATIVE - MANAGEMENT ROLES

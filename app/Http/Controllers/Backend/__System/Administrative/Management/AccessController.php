@@ -6,25 +6,59 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\Backend\__System\Controllers\Datatable\DefaultController;
 use DataTables;
 use Illuminate\Http\Request;
-use Redirect, Response;
 
-class UserController extends Controller {
+class AccessController extends Controller {
 
   use DefaultController;
 
   function __construct() {
     $this->middleware(['auth', 'role:master-administrator']);
-    $this->model = 'App\Models\User';
-    $this->path = 'pages.backend.__system.administrative.management.user.';
-    $this->url = '/dashboard/administrative\managements\users';
-    $this->sort = 1;
-    $this->RequestStore = [
-      'name'  => 'required|unique:users',
-    ];
+    $this->model = 'App\Models\Access';
+    $this->path = 'pages.backend.__system.administrative.management.access.';
+    $this->url = '/dashboard/administrative\managements\accesses';
+    $this->sort = 0;
+    $this->RequestStore = [];
     $this->RequestUpdate = [];
     if (request('date_start') && request('date_end')) { $this->data = $this->model::orderby('created_at', 'desc')->whereBetween('created_at', [request('date_start'), request('date_end')])->get(); }
-    else { $this->data = $this->model::get(); }
+    // else if (!empty($this->model::get('created_at'))) { $this->data = $this->model::orderby('created_at', 'desc')->get(); }
+    else { $this->data = $this->model::orderby('model_id', 'asc')->get(); }
   }
+
+  /**
+  **************************************************
+  * @return INDEX
+  **************************************************
+  **/
+
+  public function index() {
+    $model = $this->model;
+    if (request()->ajax()) {
+      return DataTables::of($this->data)
+      ->editColumn('role_id', function ($order) {
+        $data = \App\Models\Role::where('id', $order->role_id)->first();
+        return str_replace('-',' ',ucwords($data->name,'-'));
+      })
+      ->editColumn('model_id', function ($order) {
+        $data = \App\Models\User::where('id', $order->model_id)->first();
+        return $data->username;
+      })
+      ->editColumn('name', function ($order) {
+        $data = \App\Models\User::where('id', $order->model_id)->first();
+        return $data->name;
+      })
+      ->editColumn('email', function ($order) {
+        $data = \App\Models\User::where('id', $order->model_id)->first();
+        return $data->email;
+      })
+      ->editColumn('phone', function ($order) {
+        $data = \App\Models\User::where('id', $order->model_id)->first();
+        return $data->phone;
+      })
+      ->addIndexColumn()->make(true);
+    }
+    return view($this->path . 'index', compact('model'));
+  }
+
 
   /**
   **************************************************
@@ -33,13 +67,19 @@ class UserController extends Controller {
   **/
 
   public function store(Request $request) {
-
     $validated = $request->validate($this->RequestStore);
     $store = $request->all();
-    if(!(strcmp($request->get('password'), $request->get('confirm-password'))) == 0){
-      return redirect()->back()->with('error', __('default.notification.error.password-confirm'));
+    $store['model_type'] = 'App\Models\User';
+
+    $user = \App\Models\User::where('id', $store['model_id'])->first();
+    $role = \App\Models\Role::where('id', $store['role_id'])->first();
+    $access = \App\Models\Access::where('model_id', $user->id)->where('role_id', $role->id)->first();
+
+    if (!empty($access->role_id)) {
+      return redirect()->back()->with('error', __('default.notification.error.access-exist'));
     }
-    $this->model::create($store);
+    else { $this->model::create($store); }
+
     return redirect($this->url)->with('success', __('default.notification.success.item-created'));
   }
 
