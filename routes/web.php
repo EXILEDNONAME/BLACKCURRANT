@@ -33,7 +33,7 @@ Route::group([
 });
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Auth::routes();
@@ -41,11 +41,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/templates', function () {
-    return view('layouts.default');
+  return view('layouts.default');
 });
 
 Route::get('/datatables', function () {
-    return view('layouts.template.datatable.index');
+  return view('layouts.template.datatable.index');
 });
 
 // APPLICATIONS - DATATABLES
@@ -135,3 +135,10 @@ Route::group([
   Route::get('selected-restore', 'UserController@selected_restore')->name('selected-restore');
   Route::resource('/', 'UserController')->parameters(['' => 'id']);
 });
+
+// ADMINISTRATIVE - SETTINGS
+Route::get('/dashboard/administratives/applications/settings', [App\Http\Controllers\Backend\__System\Administrative\Application\SettingController::class, 'index'])->name('dashboard.administrative.application.setting.index');
+Route::patch('/dashboard/administratives/applications/settings/update/{id}', [App\Http\Controllers\Backend\__System\Administrative\Application\SettingController::class, 'update'])->name('dashboard.administrative.application.setting.update');
+
+Route::get('/dashboard/administratives/applications/optimizations', [App\Http\Controllers\Backend\__System\Administrative\Application\OptimizationController::class, 'index'])->name('dashboard.administrative.application.optimization.index');
+Route::patch('/dashboard/administratives/applications/optimizations/update', [App\Http\Controllers\Backend\__System\Administrative\Application\OptimizationController::class, 'update'])->name('dashboard.administrative.application.optimization.index');

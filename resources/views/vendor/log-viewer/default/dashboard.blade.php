@@ -1,4 +1,5 @@
 @extends('layouts.default', ['page' => 'statistics'])
+@section('title', 'Statistics')
 
 @section('content')
 <div class="card card-custom gutter-b" data-card="true">

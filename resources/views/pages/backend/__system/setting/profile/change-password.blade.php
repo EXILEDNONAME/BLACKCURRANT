@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@push('title', 'Change Password')
+@section('title', 'Change Password')
 
 @section('content')
 <div class="card card-custom gutter-b card-sticky" data-card="true" id="kt_page_sticky_card">
