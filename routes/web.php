@@ -142,3 +142,7 @@ Route::patch('/dashboard/administratives/applications/settings/update/{id}', [Ap
 
 Route::get('/dashboard/administratives/applications/optimizations', [App\Http\Controllers\Backend\__System\Administrative\Application\OptimizationController::class, 'index'])->name('dashboard.administrative.application.optimization.index');
 Route::patch('/dashboard/administratives/applications/optimizations/update', [App\Http\Controllers\Backend\__System\Administrative\Application\OptimizationController::class, 'update'])->name('dashboard.administrative.application.optimization.index');
+
+Route::get('/siswa', [App\Http\Controllers\Backend\__Application\Datatable\SheetController::class, 'index']);
+Route::get('/siswa/export_excel', [App\Http\Controllers\Backend\__Application\Datatable\SheetController::class, 'export_excel']);
+Route::post('/siswa/import_excel', [App\Http\Controllers\Backend\__Application\Datatable\SheetController::class, 'import_excel']);
